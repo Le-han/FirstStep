@@ -15,6 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".KollokYears">
+        </activity>
+        <activity android:name=".Var2015_1">
+        </activity>
     </application>
 
 </manifest>

@@ -8,32 +8,32 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.example.alex.firststep.R;
 
-public class MainActivity extends ListActivity {
-    private String[] mMenuArray = {"Коллоквиум", "Экзамен", "О программе", "Выход" };
+public class KollokYears extends ListActivity {
+    private String[] mYearArray = { "2015", "2014", "2013", "2012" };
 
     // Создадим адаптер
-    private ArrayAdapter<String> mMenuAdapter;
-    private String mMonth;
+    private ArrayAdapter<String> mYearAdapter;
+    //private String mYear;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMenuAdapter = new ArrayAdapter<String>(this, R.layout.lines_style, mMenuArray);
-        setListAdapter(mMenuAdapter);
-    }
 
+        mYearAdapter = new ArrayAdapter<String>(this, R.layout.lines_style, mYearArray);
+        setListAdapter(mYearAdapter);
+    }
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         //super.onListItemClick(l, v, position, id);
         switch (position){
             case 0 :
-                Intent intent = new Intent(MainActivity.this, KollokYears.class);
+                Intent intent = new Intent(KollokYears.this, Var2015_1.class);
                 startActivity(intent);
                 break;
             default:
-                Toast.makeText(getApplicationContext(), "will work later", Toast.LENGTH_SHORT).show();//lol
+                Toast.makeText(getApplicationContext(), "will work later", Toast.LENGTH_SHORT).show();
         }
-
     }
 }
