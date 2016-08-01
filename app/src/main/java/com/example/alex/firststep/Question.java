@@ -3,11 +3,11 @@ package com.example.alex.firststep;
 public class Question {
 
     private int mTextResId;
-    private boolean mAnswerTrue;
+    private String mAnswer;
 
-    public Question(int textResId, boolean answerTrue) {
+    public Question(int textResId, String answerTrue) {
         mTextResId = textResId;
-        mAnswerTrue = answerTrue;
+        mAnswer = answerTrue;
     }
 
     public int getTextResId() {
@@ -18,11 +18,11 @@ public class Question {
         mTextResId = textResId;
     }
 
-    public boolean isAnswerTrue() {
-        return mAnswerTrue;
+    public String isAnswerTrue() {
+        return mAnswer;
     }
 
-    public void setAnswerTrue(boolean answerTrue) {
-        mAnswerTrue = answerTrue;
+    public void setAnswerTrue(String answerTrue) {
+        mAnswer = answerTrue;
     }
 }

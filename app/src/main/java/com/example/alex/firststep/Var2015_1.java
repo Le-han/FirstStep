@@ -21,13 +21,17 @@ public class Var2015_1 extends AppCompatActivity {
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
     private TextView mQuestionTextView;
+    //функциональности подсматривания ответа
+    private TextView mAnswerTextView;
+    private Button mShowAnswer;
+    private String mAnswerIsTrue;
 
     private Question[] mQuestionBank = new Question[] {
-            new Question(R.string.question_oceans, true),
-            new Question(R.string.question_mideast, false),
-            new Question(R.string.question_africa, false),
-            new Question(R.string.question_americas, true),
-            new Question(R.string.question_asia, true)
+            new Question(R.string.question_oceans, "Машечкин"),
+            new Question(R.string.question_mideast, "Глазкова"),
+            new Question(R.string.question_africa, "Чернов"),
+            new Question(R.string.question_americas, "Шестимеров"),
+            new Question(R.string.question_asia, "true")
     };
 
     private int mCurrentIndex = 0;
@@ -36,7 +40,7 @@ public class Var2015_1 extends AppCompatActivity {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
-
+    /* В этой версии проверять на правильность не надо
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
 
@@ -50,7 +54,7 @@ public class Var2015_1 extends AppCompatActivity {
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
                 .show();
-    }
+    } */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,19 +62,54 @@ public class Var2015_1 extends AppCompatActivity {
         Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_var2015_1);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
-
+        //PREV
+        mPrevButton = (ImageButton)findViewById(R.id.prev_button);
+        mPrevButton.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if ((mCurrentIndex - 1) % mQuestionBank.length >= 0) {
+                    mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+                    //mIsCheater = false;
+                    int question = mQuestionBank[mCurrentIndex].getTextResId();
+                    mQuestionTextView.setText(question);
+                    mAnswerTextView.setVisibility(View.INVISIBLE);
+                    mShowAnswer.setVisibility(View.VISIBLE);
+                    updateQuestion();
+                } else {
+                    Toast.makeText(Var2015_1.this, R.string.error_prev, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        //NEXT
         mNextButton = (ImageButton)findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                mAnswerTextView.setVisibility(View.INVISIBLE);
+                mShowAnswer.setVisibility(View.VISIBLE);
                 updateQuestion();
             }
         });
+        //SHOW ANSWER
+        mAnswerTextView = (TextView)findViewById(R.id.answer_text_view);
+        mShowAnswer =(Button)findViewById(R.id.show_answer_button);
+        mShowAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Question curQuestion = mQuestionBank[mCurrentIndex];
+                mAnswerIsTrue = curQuestion.isAnswerTrue();
+                mAnswerTextView.setText(mAnswerIsTrue);
 
+                mAnswerTextView.setVisibility(View.VISIBLE);
+                mShowAnswer.setVisibility(View.INVISIBLE);
+            }
+        });
+        /*
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
         }
+        */
         updateQuestion();
     }
 }
