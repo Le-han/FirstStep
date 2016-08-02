@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:layout_marginBottom="24dp"/>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -48,7 +48,6 @@
         android:id="@+id/answer_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="36sp"
         tools:text="Answer"/>
 
 </LinearLayout>

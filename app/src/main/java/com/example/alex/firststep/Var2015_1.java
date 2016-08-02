@@ -24,15 +24,21 @@ public class Var2015_1 extends AppCompatActivity {
     //функциональности подсматривания ответа
     private TextView mAnswerTextView;
     private Button mShowAnswer;
-    private String mAnswerIsTrue;
+    private int mAnswerIsTrue;
 
     private Question[] mQuestionBank = new Question[] {
-            new Question(R.string.question_oceans, "Машечкин"),
-            new Question(R.string.question_mideast, "Глазкова"),
-            new Question(R.string.question_africa, "Чернов"),
-            new Question(R.string.question_americas, "Шестимеров"),
-            new Question(R.string.question_asia, "true")
-    };
+            new Question(R.string.V2015_1_1, R.string.A2015_1_1),
+            new Question(R.string.V2015_1_2, R.string.A2015_1_2),
+            new Question(R.string.V2015_1_3, R.string.A2015_1_3),
+            new Question(R.string.V2015_1_4, R.string.A2015_1_4),
+            new Question(R.string.V2015_1_5, R.string.A2015_1_5),
+            new Question(R.string.V2015_1_6, R.string.A2015_1_6),
+            new Question(R.string.V2015_1_7, R.string.A2015_1_7),
+            new Question(R.string.V2015_1_8, R.string.A2015_1_8),
+            new Question(R.string.V2015_1_9, R.string.A2015_1_9),
+            new Question(R.string.V2015_1_10,R.string.A2015_1_10),
+
+    };;
 
     private int mCurrentIndex = 0;
 
@@ -43,15 +49,12 @@ public class Var2015_1 extends AppCompatActivity {
     /* В этой версии проверять на правильность не надо
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
-
         int messageResId = 0;
-
         if (userPressedTrue == answerIsTrue) {
             messageResId = R.string.correct_toast;
         } else {
             messageResId = R.string.incorrect_toast;
         }
-
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
                 .show();
     } */
