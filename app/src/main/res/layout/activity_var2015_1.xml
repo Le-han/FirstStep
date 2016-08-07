@@ -3,8 +3,16 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="center"
+              android:gravity="top|center"
               android:orientation="vertical">
+    <TextView
+        android:id="@+id/VarNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        tools:text = "VAR#"
+
+        />
 
     <TextView
         android:id="@+id/question_text_view"
@@ -12,14 +20,13 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_marginBottom="24dp"/>
+        android:textSize="18sp"
+        tools:text = "Question"
+        />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="12dp"
-        android:layout_marginTop="12dp">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/prev_button"
@@ -32,7 +39,7 @@
         <ImageButton
             android:id="@+id/next_button"
             android:layout_width="64dp"
-            android:layout_height="match_parent"
+            android:layout_height="64dp"
             android:drawableRight="@drawable/arrow_right"
             android:src="@drawable/arrow_right"/>
 
@@ -42,12 +49,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SHOW ANSWER"
-        android:padding="24dp"
         />
     <TextView
         android:id="@+id/answer_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:textSize="18sp"
         tools:text="Answer"/>
 
 </LinearLayout>

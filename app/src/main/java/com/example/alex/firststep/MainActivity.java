@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
-    private String[] mMenuArray = {"Коллоквиум", "Экзамен", "О программе", "Выход" };
+    private String[] mMenuArray = {"Экзамен","Коллоквиум", "О программе", "Выход" };
 
     // Создадим адаптер
     private ArrayAdapter<String> mMenuAdapter;
@@ -28,9 +28,14 @@ public class MainActivity extends ListActivity {
         //super.onListItemClick(l, v, position, id);
         switch (position){
             case 0 :
-                Intent intent = new Intent(MainActivity.this, KollokYears.class);
+                Intent intent = new Intent(MainActivity.this, ExamYears.class);
                 startActivity(intent);
                 break;
+            case 1 :
+                intent = new Intent(MainActivity.this, KollokYears.class);
+                startActivity(intent);
+                break;
+
             default:
                 Toast.makeText(getApplicationContext(), "will work later", Toast.LENGTH_SHORT).show();//lol
         }

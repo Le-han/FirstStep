@@ -15,7 +15,7 @@ import com.example.alex.firststep.R;
 
 
 public class Var2015_1 extends AppCompatActivity {
-    private static final String TAG = "QuizActivity";
+   private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
 
     private ImageButton mNextButton;
@@ -26,22 +26,8 @@ public class Var2015_1 extends AppCompatActivity {
     private Button mShowAnswer;
     private int mAnswerIsTrue;
 
-    private Question[] mQuestionBank = new Question[] {
-            new Question(R.string.V2015_1_1, R.string.A2015_1_1),
-            new Question(R.string.V2015_1_2, R.string.A2015_1_2),
-            new Question(R.string.V2015_1_3, R.string.A2015_1_3),
-            new Question(R.string.V2015_1_4, R.string.A2015_1_4),
-            new Question(R.string.V2015_1_5, R.string.A2015_1_5),
-            new Question(R.string.V2015_1_6, R.string.A2015_1_6),
-            new Question(R.string.V2015_1_7, R.string.A2015_1_7),
-            new Question(R.string.V2015_1_8, R.string.A2015_1_8),
-            new Question(R.string.V2015_1_9, R.string.A2015_1_9),
-            new Question(R.string.V2015_1_10,R.string.A2015_1_10),
-
-    };;
-
+    private Question [] mQuestionBank;
     private int mCurrentIndex = 0;
-
     private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
@@ -62,9 +48,44 @@ public class Var2015_1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_var2015_1);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        String strId = getIntent().getExtras().getString("mKeyVar");
+        switch (strId){
+            case "Kollok2015" :
+                mQuestionBank = new Question[] {
+                        new Question(R.string.V2015_1_1, R.string.A2015_1_1),
+                        new Question(R.string.V2015_1_2, R.string.A2015_1_2),
+                        new Question(R.string.V2015_1_3, R.string.A2015_1_3),
+                        new Question(R.string.V2015_1_4, R.string.A2015_1_4),
+                        new Question(R.string.V2015_1_5, R.string.A2015_1_5),
+                        new Question(R.string.V2015_1_6, R.string.A2015_1_6),
+                        new Question(R.string.V2015_1_7, R.string.A2015_1_7),
+                        new Question(R.string.V2015_1_8, R.string.A2015_1_8),
+                        new Question(R.string.V2015_1_9, R.string.A2015_1_9),
+                        new Question(R.string.V2015_1_10,R.string.A2015_1_10),
+
+                };
+                break;
+
+            case "Exam2014" :
+                mQuestionBank = new Question[] {
+                        new Question(R.string.ExamV2014_1_1, R.string.ExamA2014_1_1),
+                        new Question(R.string.ExamV2014_1_2, R.string.ExamA2014_1_2),
+                        new Question(R.string.ExamV2014_1_3, R.string.ExamA2014_1_3)
+                        /*
+                        new Question(R.string.ExamV2014_1_4, R.string.ExamA2014_1_4),
+                        new Question(R.string.ExamV2014_1_5, R.string.ExamA2014_1_5),
+                        new Question(R.string.ExamV2014_1_6, R.string.ExamA2014_1_6),
+                        new Question(R.string.ExamV2014_1_7, R.string.ExamA2014_1_7),
+                        new Question(R.string.ExamV2014_1_8, R.string.ExamA2014_1_8),
+                        new Question(R.string.ExamV2014_1_9, R.string.ExamA2014_1_9),
+                        new Question(R.string.ExamV2014_1_10,R.string.ExamA2014_1_10),
+                        */
+                };
+                break;
+            default: Toast.makeText(getApplicationContext(), "will work later", Toast.LENGTH_SHORT).show();
+        }
         //PREV
         mPrevButton = (ImageButton)findViewById(R.id.prev_button);
         mPrevButton.setOnClickListener(new  View.OnClickListener(){

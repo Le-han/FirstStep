@@ -14,15 +14,15 @@ public class KollokYears extends ListActivity {
     private String[] mYearArray = { "2015", "2014", "2013", "2012" };
 
     // Создадим адаптер
-    private ArrayAdapter<String> mYearAdapter;
+    private ArrayAdapter<String> mYearAdapterKollok;
     //private String mYear;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mYearAdapter = new ArrayAdapter<String>(this, R.layout.lines_style, mYearArray);
-        setListAdapter(mYearAdapter);
+        mYearAdapterKollok = new ArrayAdapter<String>(this, R.layout.lines_style, mYearArray);
+        setListAdapter(mYearAdapterKollok);
     }
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -30,6 +30,14 @@ public class KollokYears extends ListActivity {
         switch (position){
             case 0 :
                 Intent intent = new Intent(KollokYears.this, Var2015_1.class);
+                intent.putExtra("mKeyVar", "Kollok2015"); //передаю по ключу mKey(строка), данные(можно разные типы)
+                //intent.putExtra("mNumOfQuestion", 1);
+                startActivity(intent);
+                break;
+            case 1 :
+                intent = new Intent(KollokYears.this, Var2015_1.class);
+                intent.putExtra("mKeyVar", "Kollok2014"); //передаю по ключу mKey(строка), данные(можно разные типы)
+                //intent.putExtra("mNumOfQuestion", "1");
                 startActivity(intent);
                 break;
             default:

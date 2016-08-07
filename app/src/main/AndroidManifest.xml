@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".Var2015_1">
         </activity>
+        <activity android:name=".ExamYears">
+        </activity>
     </application>
 
 </manifest>
