@@ -35,7 +35,7 @@ public class ExamYears extends ListActivity {
                 intent.putExtra("mKeyVar", "2015"); //передаю по ключу mKey(строка), данные(можно разные типы)
                 intent.putExtra("mNumOfQuestion", 1);
                 startActivity(intent);*/
-                Toast.makeText(getApplicationContext(), "Не нашел вариант колка за 2015 год, пожалуйста, отправьте его нам в ВК", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Не нашел вариант экзамена за 2015 год, пожалуйста, отправьте его нам в ВК", Toast.LENGTH_SHORT).show();
                 break;
             case 1 :
                 intent = new Intent(ExamYears.this, Var2015_1.class);

@@ -35,7 +35,6 @@ public class MainActivity extends ListActivity {
                 intent = new Intent(MainActivity.this, KollokYears.class);
                 startActivity(intent);
                 break;
-
             default:
                 Toast.makeText(getApplicationContext(), "will work later", Toast.LENGTH_SHORT).show();//lol
         }

@@ -18,6 +18,7 @@ public class Var2015_1 extends AppCompatActivity {
    private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
 
+
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
     private TextView mQuestionTextView;
@@ -91,8 +92,8 @@ public class Var2015_1 extends AppCompatActivity {
         mPrevButton.setOnClickListener(new  View.OnClickListener(){
             @Override
             public void onClick(View v){
-                if ((mCurrentIndex - 1) % mQuestionBank.length >= 0) {
-                    mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+                if (mCurrentIndex - 1  >= 0) {
+                    mCurrentIndex = mCurrentIndex - 1;
                     //mIsCheater = false;
                     int question = mQuestionBank[mCurrentIndex].getTextResId();
                     mQuestionTextView.setText(question);
@@ -109,12 +110,17 @@ public class Var2015_1 extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                mAnswerTextView.setVisibility(View.INVISIBLE);
-                mShowAnswer.setVisibility(View.VISIBLE);
-                updateQuestion();
+                if (mCurrentIndex + 1 < mQuestionBank.length) {
+                    mCurrentIndex = mCurrentIndex + 1;
+                    mAnswerTextView.setVisibility(View.INVISIBLE);
+                    mShowAnswer.setVisibility(View.VISIBLE);
+                    updateQuestion();
+                } else {
+                    Toast.makeText(Var2015_1.this,"Вариант пройден!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
         //SHOW ANSWER
         mAnswerTextView = (TextView)findViewById(R.id.answer_text_view);
         mShowAnswer =(Button)findViewById(R.id.show_answer_button);
@@ -135,5 +141,11 @@ public class Var2015_1 extends AppCompatActivity {
         }
         */
         updateQuestion();
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 }
